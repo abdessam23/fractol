@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:07:49 by abhimi            #+#    #+#             */
-/*   Updated: 2025/01/29 11:41:23 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/01/30 14:59:37 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ t_compx    ft_square_compx(t_compx z)
     res.y = 2 * (z.x) * (z.y);
     return (res);
 }
-t_compx ft_sum_compx(t_compx z)
+t_compx ft_sum_compx(t_compx c1, t_compx c2)
 {
     t_compx sum;
     
-    sum.x = z.x + z.x;
-    sum.y = z.y + z.y;
+    sum.x = c1.x + c2.x;
+    sum.y = c1.y + c2.y;
     return (sum);
 }
 
@@ -41,7 +41,7 @@ double  scale_map(double unscale, double new_min, double new_max, double old_min
 {
     return ((new_max - new_max) * (unscale - old_min) /(old_max - old_min) + new_min);
 }
- static double  ft_helper()
+
 double  ft_atodbl(char *str)
 {
     int i;

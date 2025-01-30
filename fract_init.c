@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   fract_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 11:43:16 by abhimi            #+#    #+#             */
-/*   Updated: 2025/01/30 09:37:08 by abhimi           ###   ########.fr       */
+/*   Created: 2025/01/30 09:17:55 by abhimi            #+#    #+#             */
+/*   Updated: 2025/01/30 09:31:51 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int main(int argc, char **argv)
+void    fract_init(char **argv)
 {
-    t_fractol   *vars;
-    
-    if (argc == 2 && (!ft_strncmp(argv[1], "mandelbrot", 10) )||
-            argc == 4 && (!ft_strncmp(argv[1], "julia", 5)))
-    {
-        fract_init(argv);
-               
-            
-    }
-    else
-        ft_error("ERROR\n");
-    return (0);
+    t_fractol *fract;
+    fract->mlx = mlx_init();
+    fract->new_win = mlx_new_window(fract, 600, 600, argv[1])
 }
