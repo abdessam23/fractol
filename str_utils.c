@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:22:35 by abhimi            #+#    #+#             */
-/*   Updated: 2025/01/27 15:33:17 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/01/31 09:59:00 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void    ft_putstr_fd(char  *s, int fd)
     }
 }
 
-void   ft_error(char    *str)
+void   ft_error()
 {
-    ft_putstr_fd(str,2);
+    perror("problem of allocation");
     exit(1);
 }
