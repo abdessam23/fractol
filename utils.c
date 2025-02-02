@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:07:49 by abhimi            #+#    #+#             */
-/*   Updated: 2025/01/30 14:59:37 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/01/31 16:04:59 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ double  ft_atodbl(char *str)
     }
     if (str[i] == '.')
     {
-        i++
+        i++;
         while (str[i] >= '0' && str[i] <= '9')
         {
             result = result * 10 + str[i] - '0';

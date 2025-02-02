@@ -6,29 +6,28 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:03:30 by abhimi            #+#    #+#             */
-/*   Updated: 2025/01/31 11:19:47 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/02 18:41:48 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-
 # include <math.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include "./minilibx-linux/mlx.h"
-
+# include <X11/X.h>
+# include <X11/Xlib.h>
+# include <X11/Xutil.h>
 # define HEIGHT 600
 # define WIDTH 600
-
 
 #define BLACK         0x000000  
 #define DARK_GRAY     0x404040  
 #define GRAY          0x808080 
 #define WHITE         0xFFFFFF
-
 
 typedef struct s_img
 {
@@ -65,6 +64,7 @@ int         ft_strncmp(char *s1, char *s2, int l);
 void        ft_error(void);
 double      scale_map(double unscale, double new_min, double new_max, double old_min,double old_max);
 void        fract_init(t_fractol *fract);
+void        fract_render(t_fractol *fract);
 t_compx     ft_abs_compx(t_compx z);
 t_compx     ft_sum_compx(t_compx z1, t_compx z2);
 t_compx     ft_square_compx(t_compx z);
