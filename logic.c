@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:51:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/03 13:28:06 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/03 16:28:18 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,25 @@ void handel_pixel(int x, int y, t_fractol *fract)
     int i;
     int color;
 
-    if (!fract || !fract->img)
+    if (!fract)
         return;
-
     i = 0;
     z.x = 0.0;
     z.y = 0.0;
-    c.x = scale_map(x, -2, 2, 0, WIDTH); //* fract->zoom + fract->offset_x;
-    c.y = scale_map(y, -2, 2, 0, HEIGHT); //* fract->zoom + fract->offset_y;
-
+    c.x = scale_map(x, -2, 2, 0, WIDTH) * fract->zoom + fract->offset_x;
+    c.y = scale_map(y, -2, 2, 0, HEIGHT) * fract->zoom + fract->offset_y;
     while (i < fract->iteration)
     {
         z = ft_sum_compx(ft_square_compx(z), c);
         if ((z.x * z.x) + (z.y * z.y) > fract->escape_v)
         {
             color = scale_map(i, BLACK, WHITE, 0, fract->iteration);
-            my_pixel_put(x, y, fract->img, color);
+            my_pixel_put(x, y, &fract->img, color);
             return;
         }
         i++;
     }
-    my_pixel_put(x, y, fract->img, DARK_GRAY);
+    my_pixel_put(x, y, &fract->img, LIGHT_PURPLE);
 }
 
 void fract_render(t_fractol *fract)
@@ -57,9 +55,8 @@ void fract_render(t_fractol *fract)
     int x;
     int y;
    
-    if (!fract || !fract->img)
+    if (!fract)
         return;
-
     y = 0;
     while (y < HEIGHT)
     {
@@ -71,5 +68,5 @@ void fract_render(t_fractol *fract)
         }
         y++;
     }
-    mlx_put_image_to_window(fract->mlx, fract->new_win, fract->img->img_p, 0, 0);
+    mlx_put_image_to_window(fract->mlx, fract->new_win, fract->img.img_p, 0, 0);
 }

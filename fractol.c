@@ -6,11 +6,35 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:43:16 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/03 13:25:34 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/03 16:27:36 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int ft_close(int key,t_fractol *fract)
+{
+    printf("%d\n", key);
+    if (key == KEY_UP)
+        fract->offset_y -= 0.1 / fract->zoom;
+    if (key == KEY_DOWN)
+        fract->offset_y += 0.1 / fract->zoom;
+    if (key == KEY_LEFT)
+        fract->offset_x -= 0.1 / fract->zoom;
+    if (key == KEY_RIGHT)
+        fract->offset_x += 0.1 / fract->zoom;
+    if (key == KEY_PLUS)
+        fract->zoom *= 1.1;
+    if (key == KEY_MINUS)
+        fract->zoom /= 1.1;
+    if (key == KEY_ESC)
+    {
+        ft_destroy(fract);
+    }
+    fract_render(fract);
+    return (0);
+    
+}
 
 int main(int argc, char **argv)
 {
@@ -21,6 +45,8 @@ int main(int argc, char **argv)
         vars.title = argv[1];
         fract_init(&vars);
         fract_render(&vars);
+        mlx_hook(vars.new_win, 2, 1L<<0, ft_close, &vars);
+        mlx_key_hook(vars.new_win, ft_close, &vars);
         mlx_loop(vars.mlx);       
     }
     else

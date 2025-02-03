@@ -11,7 +11,7 @@ TARGET = fractol
 all: $(TARGET)
 
 $(TARGET): $(OBJS) $(MLX_LIB)
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -o $(TARGET)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -o $(TARGET) -g
 
 %.o:%.c
 	$(CC) $(CFLAGS) -I$(MLX_DIR) -c $< -o $@
