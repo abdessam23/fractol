@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:43:16 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/02 19:07:16 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/03 13:25:34 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int main(int argc, char **argv)
         fract_init(&vars);
         fract_render(&vars);
         mlx_loop(vars.mlx);       
-            
     }
     else
         ft_error();

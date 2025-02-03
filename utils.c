@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:07:49 by abhimi            #+#    #+#             */
-/*   Updated: 2025/01/31 16:04:59 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/03 11:34:35 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_compx     ft_abs_compx(t_compx z)
 }
 double  scale_map(double unscale, double new_min, double new_max, double old_min,double old_max)
 {
-    return ((new_max - new_max) * (unscale - old_min) /(old_max - old_min) + new_min);
+    return ((new_max - new_min) * (unscale - old_min) /(old_max - old_min) + new_min);
 }
 
 double  ft_atodbl(char *str)

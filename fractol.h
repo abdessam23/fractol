@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:03:30 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/02 18:41:48 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/03 13:24:21 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,25 @@
 # include <X11/X.h>
 # include <X11/Xlib.h>
 # include <X11/Xutil.h>
-# define HEIGHT 600
-# define WIDTH 600
+# define HEIGHT 800
+# define WIDTH 800
 
 #define BLACK         0x000000  
 #define DARK_GRAY     0x404040  
 #define GRAY          0x808080 
 #define WHITE         0xFFFFFF
-
+#define LIGHT_GRAY    0xD3D3D3  
+#define SILVER        0xC0C0C0  
+#define DARK_BLUE     0x00008B  
+#define LIGHT_BLUE    0xADD8E6  
+#define DARK_RED      0x8B0000  
+#define LIGHT_RED     0xFF6347  
+#define DARK_GREEN    0x006400  
+#define LIGHT_GREEN   0x90EE90  
+#define DARK_YELLOW   0x9B870C  
+#define LIGHT_YELLOW  0xFFFFE0  
+#define DARK_PURPLE   0x4B0082  
+#define LIGHT_PURPLE  0xD8B0FF
 typedef struct s_img
 {
     void    *img_p;
@@ -54,6 +65,7 @@ typedef struct s_fractol
     double  escape_v;
     double  offset_x;
     double  offset_y;
+    double  zoom;
     
 }  t_fractol;
 
