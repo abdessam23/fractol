@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 09:17:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/03 16:17:05 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/03 17:04:54 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ void    fract_init(t_fractol *fract)
         ft_error();
     }
     fract->img.pix = mlx_get_data_addr(fract->img.img_p, &fract->img.bits, &fract->img.l_len, &fract->img.endian);
-    fract->iteration = 42;
+    fract->iteration = 100;
     fract->escape_v =  4;
     fract->zoom =1;
     fract->offset_x =0.0;
     fract->offset_y = 0.0;
+    
 }

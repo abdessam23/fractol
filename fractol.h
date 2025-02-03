@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:03:30 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/03 16:39:42 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/03 17:03:56 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 #define KEY_DOWN 65364
 #define KEY_LEFT 65363
 #define KEY_RIGHT 65361
-#define KEY_PLUS 65451
-#define KEY_MINUS 65453
+#define KEY_PLUS 65453
+#define KEY_MINUS 65451
 typedef struct s_img
 {
     void    *img_p;
@@ -70,7 +70,7 @@ typedef struct s_fractol
     double  zoom;
     double  julia_x;
     double  julia_y;
-    double  julia;
+    double  set;
     
 }  t_fractol;
 
@@ -86,6 +86,7 @@ void        fract_render(t_fractol *fract);
 t_compx     ft_abs_compx(t_compx z);
 t_compx     ft_sum_compx(t_compx z1, t_compx z2);
 t_compx     ft_square_compx(t_compx z);
+double      ft_atodbl(char *str);
 
 #endif
 

@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:43:16 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/03 16:27:36 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/03 17:01:51 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ int main(int argc, char **argv)
     
     if ((argc == 2 && (!ft_strncmp(argv[1], "mandelbrot", 10)))|| (argc == 4 && (!ft_strncmp(argv[1], "julia", 5))))
     {
+        if (!ft_strncmp(argv[1], "mandelbrot", 10))
+            vars.set = 0;
+        else
+        {
+            vars.set = 1;
+            vars.julia_x = ft_atodbl(argv[2]);
+            vars.julia_y = ft_atodbl(argv[3]);
+        }
         vars.title = argv[1];
         fract_init(&vars);
         fract_render(&vars);
