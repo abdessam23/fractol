@@ -6,15 +6,14 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:43:16 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/03 17:01:51 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/04 15:55:24 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int ft_close(int key,t_fractol *fract)
+int ft_key(int key,t_fractol *fract)
 {
-    printf("%d\n", key);
     if (key == KEY_UP)
         fract->offset_y -= 0.1 / fract->zoom;
     if (key == KEY_DOWN)
@@ -53,11 +52,14 @@ int main(int argc, char **argv)
         vars.title = argv[1];
         fract_init(&vars);
         fract_render(&vars);
-        mlx_hook(vars.new_win, 2, 1L<<0, ft_close, &vars);
-        mlx_key_hook(vars.new_win, ft_close, &vars);
+        mlx_hook(vars.new_win, 2, 1L<<0, ft_key, &vars);
+        mlx_key_hook(vars.new_win, ft_key, &vars);
         mlx_loop(vars.mlx);       
     }
     else
-        ft_error();
+    {    
+        ft_putstr_fd("usage: ./fractol mandelbrot or ./fractol julia x y\n", 2);
+        exit(1);
+    }
     return (0);
 }

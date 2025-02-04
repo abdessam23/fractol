@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:03:30 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/03 17:03:56 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/04 16:12:32 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 #define LIGHT_BLUE    0xADD8E6    
 #define LIGHT_RED     0xFF6347   
 #define LIGHT_GREEN   0x90EE90   
-#define LIGHT_YELLOW  0xFFFFE0   
-#define LIGHT_PURPLE  0xD8B0FF
+#define YELLOW  0xFFFF00 
+#define LIGHT_PURPLE  0x800080
 
 #define KEY_ESC 65307
 #define KEY_UP 65362
@@ -42,6 +42,13 @@
 #define KEY_RIGHT 65361
 #define KEY_PLUS 65453
 #define KEY_MINUS 65451
+
+#define MOUSE_LEFT_BUTTON 1
+#define MOUSE_MIDDLE_BUTTON 2
+#define MOUSE_RIGHT_BUTTON 3
+#define MOUSE_SCROLL_UP 4
+#define MOUSE_SCROLL_DOWN 5
+
 typedef struct s_img
 {
     void    *img_p;

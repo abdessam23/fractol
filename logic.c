@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:51:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/03 16:53:19 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/04 15:44:12 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void init_julia(int x, int y, t_compx *z, t_compx *c, t_fractol *fract)
     if (!fract)
         return;
     z->x = scale_map(x, -2, 2, 0, WIDTH) * fract->zoom + fract->offset_x;
-    z->y = scale_map(y, -2, 2, 0, HEIGHT) * fract->zoom + fract->offset_y;
+    z->y = scale_map(y, 2, -2, 0, HEIGHT) * fract->zoom + fract->offset_y;
     c->x = fract->julia_x;
     c->y = fract->julia_y;
 }
@@ -64,7 +64,7 @@ void handel_pixel(int x, int y, t_fractol *fract)
         z = ft_sum_compx(ft_square_compx(z), c);
         if ((z.x * z.x) + (z.y * z.y) > fract->escape_v)
         {
-            color = scale_map(i, BLACK, WHITE, 0, fract->iteration);
+            color = scale_map(i, BLACK, LIGHT_RED, 0, fract->iteration);
             my_pixel_put(x, y, &fract->img, color);
             return;
         }
