@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:51:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/04 15:44:12 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/05 16:18:09 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void init_julia(int x, int y, t_compx *z, t_compx *c, t_fractol *fract)
     if (!fract)
         return;
     z->x = scale_map(x, -2, 2, 0, WIDTH) * fract->zoom + fract->offset_x;
-    z->y = scale_map(y, 2, -2, 0, HEIGHT) * fract->zoom + fract->offset_y;
+    z->y = scale_map(y, -2, 2, 0, HEIGHT) * fract->zoom + fract->offset_y;
     c->x = fract->julia_x;
     c->y = fract->julia_y;
 }
@@ -47,20 +47,18 @@ void handel_pixel(int x, int y, t_fractol *fract)
     int i;
     int color;
 
-    if (!fract)
+    if (!fract || !fract->img.img_p || !fract->img.pix || 
+        x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
         return;
     i = 0;
-    if (fract->set == 0)
+    if (fract->set == 0 || !ft_strncmp(fract->title, "burning_ship", 12))
         init_mandelbrot(x, y, &z, &c, fract);
     else
         init_julia(x, y, &z, &c, fract);
-    
-    /*z.x = 0.0;
-    z.y = 0.0;
-    c.x = scale_map(x, -2, 2, 0, WIDTH) * fract->zoom + fract->offset_x;
-    c.y = scale_map(y, -2, 2, 0, HEIGHT) * fract->zoom + fract->offset_y;*/
     while (i < fract->iteration)
     {
+        if (!ft_strncmp(fract->title, "burning_ship", 12))
+            z = ft_abs_compx(z);
         z = ft_sum_compx(ft_square_compx(z), c);
         if ((z.x * z.x) + (z.y * z.y) > fract->escape_v)
         {
@@ -70,7 +68,7 @@ void handel_pixel(int x, int y, t_fractol *fract)
         }
         i++;
     }
-    my_pixel_put(x, y, &fract->img, LIGHT_PURPLE);
+    my_pixel_put(x, y, &fract->img, BLACK);
 }
 
 void fract_render(t_fractol *fract)

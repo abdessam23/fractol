@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:03:30 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/04 16:12:32 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/05 15:40:11 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <X11/Xutil.h>
 # define HEIGHT 800
 # define WIDTH 800
+# define ZOOM_IN 1.2
+# define ZOOM_OUT 0.8
 
 #define BLACK         0x000000    
 #define GRAY          0x808080 
@@ -32,12 +34,12 @@
 #define LIGHT_BLUE    0xADD8E6    
 #define LIGHT_RED     0xFF6347   
 #define LIGHT_GREEN   0x90EE90   
-#define YELLOW  0xFFFF00 
+#define YELLOW        0xFFFF00 
 #define LIGHT_PURPLE  0x800080
 
 #define KEY_ESC 65307
-#define KEY_UP 65362
-#define KEY_DOWN 65364
+#define KEY_UP 65364
+#define KEY_DOWN 65362
 #define KEY_LEFT 65363
 #define KEY_RIGHT 65361
 #define KEY_PLUS 65453
@@ -86,6 +88,8 @@ int         ft_destroy(t_fractol *fract);
 void        ft_putstr_fd(char  *s, int fd);
 size_t      ft_strlen(char   *str);
 int         ft_strncmp(char *s1, char *s2, int l);
+int         mouse_handle(int button, int x, int y, t_fractol *param);
+int         ft_key(int key,t_fractol *fract);
 void        ft_error(void);
 double      scale_map(double unscale, double new_min, double new_max, double old_min,double old_max);
 void        fract_init(t_fractol *fract);
