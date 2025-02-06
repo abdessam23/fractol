@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:51:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/05 16:18:09 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/06 10:04:47 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void init_julia(int x, int y, t_compx *z, t_compx *c, t_fractol *fract)
 {
     if (!fract)
         return;
-    z->x = scale_map(x, -2, 2, 0, WIDTH) * fract->zoom + fract->offset_x;
+    z->x = scale_map(x, -2.5, 2, 0, WIDTH) * fract->zoom + fract->offset_x;
     z->y = scale_map(y, -2, 2, 0, HEIGHT) * fract->zoom + fract->offset_y;
     c->x = fract->julia_x;
     c->y = fract->julia_y;
@@ -47,9 +47,6 @@ void handel_pixel(int x, int y, t_fractol *fract)
     int i;
     int color;
 
-    if (!fract || !fract->img.img_p || !fract->img.pix || 
-        x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
-        return;
     i = 0;
     if (fract->set == 0 || !ft_strncmp(fract->title, "burning_ship", 12))
         init_mandelbrot(x, y, &z, &c, fract);

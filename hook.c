@@ -6,11 +6,21 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:31:52 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/05 16:19:56 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/06 10:02:22 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int handle_close(t_fractol *fract)
+{
+    if (fract)
+    {
+        ft_destroy(fract);
+        exit (0);
+    }
+    return (0);
+}
 
 int mouse_handle(int button, int x, int y, t_fractol *fract)
 {
@@ -55,4 +65,11 @@ int ft_key(int key,t_fractol *fract)
     fract_render(fract);
     return (0);
     
+}
+
+void    ft_hook(t_fractol *fract)
+{
+    mlx_hook(fract->new_win, DestroyNotify, StructureNotifyMask, handle_close, fract);
+    mlx_key_hook(fract->new_win, ft_key, fract);
+    mlx_mouse_hook(fract->new_win, mouse_handle, fract);
 }

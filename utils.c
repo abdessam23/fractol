@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:07:49 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/05 11:23:34 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/06 15:17:38 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,9 @@ double  ft_atodbl(char *str)
     double result;
     double pow;
 
-
     result = 0.0;
     i = 0;
-    pow = 1.0;
+    pow = 1;
     sign = 1;
     while((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
         i++;
@@ -62,21 +61,15 @@ double  ft_atodbl(char *str)
             sign *= -1;
         i++;
     }
-    if (str[i] == '.')
-        i++;
     while (str[i] >= '0' && str[i] <= '9')
-    {
-        result = result * 10 + str[i] - '0';
-        i++;
-    }
+        result = result * 10 + str[i++] - '0';
     if (str[i] == '.')
     {
         i++;
         while (str[i] >= '0' && str[i] <= '9')
         {
-            result = result * 10 + str[i] - '0';
+            result = result * 10 + str[i++] - '0';
             pow *= 10;
-            i++;
         }
     }
     return (sign * result / pow);

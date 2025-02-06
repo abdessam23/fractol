@@ -6,22 +6,18 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:43:16 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/05 16:29:42 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/06 10:05:21 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int handle_close(t_fractol *fract)
+static void  ft_error_arg(void)
 {
-    if (fract)
-    {
-        ft_destroy(fract);
-        exit (0);
-    }
-    return (0);
+    ft_putstr_fd(" -------------Usage:---------- \n || ./fractol mandelbrot    || \n || ./fractol julia x y     || \n || ./fractol burning_ship  ||\n", 2);
+    ft_putstr_fd(" -----------------------------\n", 2);
+    exit(1);
 }
-
 int main(int argc, char **argv)
 {
     t_fractol   vars;
@@ -40,17 +36,11 @@ int main(int argc, char **argv)
         vars.title = argv[1];
         fract_init(&vars);
         fract_render(&vars);
-        mlx_hook(vars.new_win, DestroyNotify, StructureNotifyMask, handle_close, &vars);
-        mlx_key_hook(vars.new_win, ft_key, &vars);
-        mlx_mouse_hook(vars.new_win, mouse_handle, &vars);
+        ft_hook(&vars);
         mlx_loop(vars.mlx);
         ft_destroy(&vars);      
     }
     else
-    {    
-        ft_putstr_fd(" -------------Usage:---------- \n || ./fractol mandelbrot    || \n || ./fractol julia x y     || \n || ./fractol burning_ship  ||\n", 2);
-        ft_putstr_fd(" -----------------------------\n", 2);
-        exit(1);
-    }
+        ft_error_arg();
     return (0);
 }
