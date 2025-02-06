@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   logic.c                                            :+:      :+:    :+:   */
+/*   fract_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:51:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/06 10:04:47 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/06 15:41:46 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void handel_pixel(int x, int y, t_fractol *fract)
         z = ft_sum_compx(ft_square_compx(z), c);
         if ((z.x * z.x) + (z.y * z.y) > fract->escape_v)
         {
-            color = scale_map(i, BLACK, LIGHT_RED, 0, fract->iteration);
+            color = scale_map(i, BLACK, WHITE, 0, fract->iteration);
             my_pixel_put(x, y, &fract->img, color);
             return;
         }
