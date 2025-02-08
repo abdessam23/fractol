@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:22:35 by abhimi            #+#    #+#             */
-/*   Updated: 2025/01/31 09:59:00 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/08 10:16:23 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,43 @@ void    ft_putstr_fd(char  *s, int fd)
         s++;
     }
 }
-
-void   ft_error()
+static double ft_dot(char *str, double result, int i)
 {
-    perror("problem of allocation");
-    exit(1);
+    double pow;
+    pow = 1;
+
+    i++;
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        result = result * 10 + str[i] - '0';
+        pow *= 10;
+        i++;
+    }
+    return (result / pow);
+
+}
+
+
+double  ft_atodbl(char *str)
+{
+    int i;
+    int sign;
+    double result;
+
+    result = 0.0;
+    i = 0;
+    sign = 1;
+    while((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+        i++;
+    if(str[i] == '+' || str[i] == '-')
+    {
+        if (str[i] == '-')
+            sign = -1;
+        i++;
+    }
+    while (str[i] >= '0' && str[i] <= '9')
+        result = result * 10 + str[i++] - '0';
+    if (str[i] == '.')
+        result = ft_dot(str, result, i);
+    return (sign * result);
 }

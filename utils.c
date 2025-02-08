@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:07:49 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/06 15:17:38 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:26:03 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_compx    ft_square_compx(t_compx z)
     res.y = 2 * (z.x) * (z.y);
     return (res);
 }
+
 t_compx ft_sum_compx(t_compx c1, t_compx c2)
 {
     t_compx sum;
@@ -37,40 +38,14 @@ t_compx     ft_abs_compx(t_compx z)
     abs.y = fabs(z.y);
     return (abs);
 }
+
 double  scale_map(double unscale, double new_min, double new_max, double old_min,double old_max)
 {
     return ((new_max - new_min) * (unscale - old_min) /(old_max - old_min) + new_min);
 }
 
-double  ft_atodbl(char *str)
+void   ft_error()
 {
-    int i;
-    int sign;
-    double result;
-    double pow;
-
-    result = 0.0;
-    i = 0;
-    pow = 1;
-    sign = 1;
-    while((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-        i++;
-    if(str[i] == '+' || str[i] == '-')
-    {
-        if (str[i] == '-')
-            sign *= -1;
-        i++;
-    }
-    while (str[i] >= '0' && str[i] <= '9')
-        result = result * 10 + str[i++] - '0';
-    if (str[i] == '.')
-    {
-        i++;
-        while (str[i] >= '0' && str[i] <= '9')
-        {
-            result = result * 10 + str[i++] - '0';
-            pow *= 10;
-        }
-    }
-    return (sign * result / pow);
+    perror("problem of allocation");
+    exit(1);
 }

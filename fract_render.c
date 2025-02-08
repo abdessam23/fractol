@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:51:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/06 15:41:46 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:08:56 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void my_pixel_put(int x, int y, t_img *img, int color)
     offset = (y * img->l_len) + (x * (img->bits / 8));
     *(unsigned int *)(img->pix + offset) = color;
 }
-void init_mandelbrot(int x, int y, t_compx *z, t_compx *c, t_fractol *fract)
+static void init_mandelbrot(int x, int y, t_compx *z, t_compx *c, t_fractol *fract)
 {
     if (!fract)
         return;
@@ -31,16 +31,16 @@ void init_mandelbrot(int x, int y, t_compx *z, t_compx *c, t_fractol *fract)
     c->y = scale_map(y, -2, 2, 0, HEIGHT) * fract->zoom + fract->offset_y;
 }
 
-void init_julia(int x, int y, t_compx *z, t_compx *c, t_fractol *fract)
+static void init_julia(int x, int y, t_compx *z, t_compx *c, t_fractol *fract)
 {
     if (!fract)
         return;
-    z->x = scale_map(x, -2.5, 2, 0, WIDTH) * fract->zoom + fract->offset_x;
+    z->x = scale_map(x, -2, 2, 0, WIDTH) * fract->zoom + fract->offset_x;
     z->y = scale_map(y, -2, 2, 0, HEIGHT) * fract->zoom + fract->offset_y;
     c->x = fract->julia_x;
     c->y = fract->julia_y;
 }
-void handel_pixel(int x, int y, t_fractol *fract)
+static void handel_pixel(int x, int y, t_fractol *fract)
 {
     t_compx z;
     t_compx c;
