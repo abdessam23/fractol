@@ -6,49 +6,51 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 09:17:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/05 12:30:57 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/08 16:21:06 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int ft_destroy(t_fractol *fract)
+int	ft_destroy(t_fractol *fract)
 {
-    if(fract->img.img_p)
-        mlx_destroy_image(fract->mlx, fract->img.img_p);
-    if(fract->new_win)
-        mlx_destroy_window(fract->mlx, fract->new_win);
-    if(fract->mlx)
-        mlx_destroy_display(fract->mlx);
-    if(fract->mlx)
-        free(fract->mlx);
-    exit (0);
-    return (0);
+	if (fract->img.img_p)
+		mlx_destroy_image(fract->mlx, fract->img.img_p);
+	if (fract->new_win)
+		mlx_destroy_window(fract->mlx, fract->new_win);
+	if (fract->mlx)
+		mlx_destroy_display(fract->mlx);
+	if (fract->mlx)
+		free(fract->mlx);
+	exit(0);
+	return (0);
 }
 
-void    fract_init(t_fractol *fract)
+void	fract_init(t_fractol *fract, char **argv)
 {
-    if (fract == NULL)
-        return ;
-    fract->mlx = mlx_init();
-    if (fract->mlx == NULL)
-        ft_error();
-    fract->new_win = mlx_new_window(fract->mlx, WIDTH, HEIGHT, fract->title);
-    if (fract->new_win == NULL)
-    {
-        ft_destroy(fract);
-        ft_error();
-    }
-    fract->img.img_p = mlx_new_image(fract->mlx, WIDTH, HEIGHT);
-    if (fract->img.img_p == NULL)
-    {
-        ft_destroy(fract);
-        ft_error();
-    }
-    fract->img.pix = mlx_get_data_addr(fract->img.img_p, &fract->img.bits, &fract->img.l_len, &fract->img.endian);
-    fract->iteration = 100;
-    fract->escape_v =  4;
-    fract->zoom = 1;
-    fract->offset_x =0.0;
-    fract->offset_y = 0.0;
+	if (fract == NULL)
+		return ;
+	fract->title = argv[1];
+	fract->mlx = mlx_init();
+	if (fract->mlx == NULL)
+		ft_error();
+	fract->new_win = mlx_new_window(fract->mlx, WIDTH, HEIGHT, fract->title);
+	if (fract->new_win == NULL)
+	{
+		ft_destroy(fract);
+		ft_error();
+	}
+	fract->img.img_p = mlx_new_image(fract->mlx, WIDTH, HEIGHT);
+	if (fract->img.img_p == NULL)
+	{
+		ft_destroy(fract);
+		ft_error();
+	}
+	fract->img.pix = mlx_get_data_addr(fract->img.img_p, &fract->img.bits,
+			&fract->img.l_len, &fract->img.endian);
+	fract->iteration = 100;
+	fract->escape_v = 4;
+	fract->zoom = 1;
+	fract->offset_x = 0.0;
+	fract->offset_y = 0.0;
 }

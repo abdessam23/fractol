@@ -6,82 +6,82 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:22:35 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/08 10:16:23 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/08 14:22:32 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-size_t ft_strlen(char   *str)
+size_t	ft_strlen(char *str)
 {
-    size_t  i;
-    
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
-}
-int ft_strncmp(char *s1, char *s2, int l)
-{
-    int i;
+	size_t	i;
 
-    i = 0;
-    while (s1[i] && i < l)
-    {
-        if(s1[i] != s2[i])
-            return (s1[i] - s2[i]);
-        i++;
-    }
-    return (0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-void    ft_putstr_fd(char  *s, int fd)
+int	ft_strncmp(char *s1, char *s2, int l)
 {
-    if (!s || fd < 0)
-        return;
-    while(*s)
-    {
-        write(fd, s, 1);
-        s++;
-    }
-}
-static double ft_dot(char *str, double result, int i)
-{
-    double pow;
-    pow = 1;
+	int	i;
 
-    i++;
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        result = result * 10 + str[i] - '0';
-        pow *= 10;
-        i++;
-    }
-    return (result / pow);
-
+	i = 0;
+	while (s1[i] && i < l)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
 }
 
-
-double  ft_atodbl(char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
-    int i;
-    int sign;
-    double result;
+	if (!s || fd < 0)
+		return ;
+	while (*s)
+	{
+		write(fd, s, 1);
+		s++;
+	}
+}
 
-    result = 0.0;
-    i = 0;
-    sign = 1;
-    while((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-        i++;
-    if(str[i] == '+' || str[i] == '-')
-    {
-        if (str[i] == '-')
-            sign = -1;
-        i++;
-    }
-    while (str[i] >= '0' && str[i] <= '9')
-        result = result * 10 + str[i++] - '0';
-    if (str[i] == '.')
-        result = ft_dot(str, result, i);
-    return (sign * result);
+static	double	ft_dot(char *str, double result, int i)
+{
+	double	pow;
+
+	pow = 1.0;
+	i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + str[i] - '0';
+		pow *= 10;
+		i++;
+	}
+	return (result / pow);
+}
+
+double	ft_atodbl(char *str)
+{
+	int		i;
+	int		sign;
+	double	result;
+
+	result = 0.0;
+	i = 0;
+	sign = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+		result = result * 10 + str[i++] - '0';
+	if (str[i] == '.')
+		result = ft_dot(str, result, i);
+	return (sign * result);
 }
