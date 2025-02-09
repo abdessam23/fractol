@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:03:30 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/08 19:01:39 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/09 17:04:42 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define HEIGHT 800
-# define WIDTH 800
+# define HEIGHT 600
+# define WIDTH 600
 # define ZOOM_IN 1.2
 # define ZOOM_OUT 0.8
 
@@ -42,8 +42,6 @@
 # define KEY_DOWN 65362
 # define KEY_LEFT 65363
 # define KEY_RIGHT 65361
-# define KEY_PLUS 65453
-# define KEY_MINUS 65451
 
 # define MOUSE_LEFT_BUTTON 1
 # define MOUSE_MIDDLE_BUTTON 2
@@ -79,8 +77,6 @@ typedef struct s_fractol
 	double	zoom;
 	double	julia_x;
 	double	julia_y;
-	double	set;
-
 }			t_fractol;
 
 // string utils

@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:43:16 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/08 16:18:25 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/09 16:52:09 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,8 @@ int	main(int argc, char **argv)
 			|| (argc == 4 && (!ft_strncmp(argv[1], "julia", 5)))
 			|| !ft_strncmp(argv[1], "burning_ship", 12))
 		{
-			if (!ft_strncmp(argv[1], "mandelbrot", 10))
-				vars.set = 0;
-			else if (argc == 4 && (!ft_strncmp(argv[1], "julia", 5)))
+			if (argc == 4 && (!ft_strncmp(argv[1], "julia", 5)))
 			{
-				vars.set = 1;
 				vars.julia_x = ft_atodbl(argv[2]);
 				vars.julia_y = ft_atodbl(argv[3]);
 			}
@@ -42,6 +39,8 @@ int	main(int argc, char **argv)
 			ft_hook(&vars);
 			mlx_loop(vars.mlx);
 		}
+		else
+			ft_error_arg();
 	}
 	else
 		ft_error_arg();

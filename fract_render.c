@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:51:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/08 18:57:45 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/09 16:52:58 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,20 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 	*(unsigned int *)(img->pix + offset) = color;
 }
 
-static void	init_mandelbrot(int x, int y, t_compx *z, t_compx *c,
-		t_fractol *fract)
+static void	init_julia(t_compx *z, t_compx *c, t_fractol *fract)
 {
 	if (!fract)
 		return ;
-	z->x = 0.0;
-	z->y = 0.0;
-	c->x = scale_map(x, -2, 2, WIDTH) * fract->zoom + fract->offset_x;
-	c->y = scale_map(y, -2, 2, HEIGHT) * fract->zoom + fract->offset_y;
-}
-
-static void	init_julia(int x, int y, t_compx *z, t_compx *c, t_fractol *fract)
-{
-	if (!fract)
-		return ;
-	z->x = scale_map(x, -2, 2, WIDTH) * fract->zoom + fract->offset_x;
-	z->y = scale_map(y, -2, 2, HEIGHT) * fract->zoom + fract->offset_y;
-	c->x = fract->julia_x;
-	c->y = fract->julia_y;
+	if (!ft_strncmp(fract->title, "julia", 5))
+	{
+		c->x = fract->julia_x;
+		c->y = fract->julia_y;
+	}
+	else
+	{
+		c->x = z->x ;
+		c->y = z->y ;
+	}
 }
 
 static void	handel_pixel(int x, int y, t_fractol *fract)
@@ -51,10 +46,9 @@ static void	handel_pixel(int x, int y, t_fractol *fract)
 	int		color;
 
 	i = 0;
-	if (fract->set == 0 || !ft_strncmp(fract->title, "burning_ship", 12))
-		init_mandelbrot(x, y, &z, &c, fract);
-	else
-		init_julia(x, y, &z, &c, fract);
+	z.x = scale_map(x, -2, 2, WIDTH) * fract->zoom + fract->offset_x;
+	z.y = scale_map(y, -2, 2, HEIGHT) * fract->zoom + fract->offset_y;
+	init_julia(&z, &c, fract);
 	while (i < fract->iteration)
 	{
 		if (!ft_strncmp(fract->title, "burning_ship", 12))
