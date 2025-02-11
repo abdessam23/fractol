@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:03:30 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/09 17:04:42 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/11 16:02:23 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define WIDTH 600
 # define ZOOM_IN 1.2
 # define ZOOM_OUT 0.8
+# define ZOOM_F 1.1
 
 # define BLACK 0x000000
 # define GRAY 0x808080
@@ -36,6 +37,7 @@
 # define LIGHT_GREEN 0x90EE90
 # define YELLOW 0xFFFF00
 # define LIGHT_PURPLE 0x800080
+# define LIGHT_P 0x51262635
 
 # define KEY_ESC 65307
 # define KEY_UP 65364

@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:31:52 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/08 15:10:59 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/11 17:16:41 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,27 @@ int	mouse_handle(int button, int x, int y, t_fractol *fract)
 {
 	double	m_x;
 	double	m_y;
+	double	z_factor;
 
-	if (button == MOUSE_SCROLL_DOWN)
+	m_x = (double)x / WIDTH * (2 -(-2)) - 2;
+	m_y = (double)y / HEIGHT * (2 - (-2)) - 2;
+	if (button == MOUSE_SCROLL_UP)
 	{
-		m_x = (x - WIDTH / 2.0) / (0.5 * WIDTH * fract->zoom) + fract->offset_x;
-		m_y = (y - HEIGHT / 2.0) / (0.5 * HEIGHT * fract->zoom)
-			+ fract->offset_y;
-		fract->zoom *= ZOOM_OUT;
-		fract->offset_x = m_x - (x - WIDTH / 2.0) / (0.5 * WIDTH * fract->zoom);
-		fract->offset_y = m_y - (y - HEIGHT / 2.0) / (0.5 * HEIGHT
-				* fract->zoom);
+		z_factor = 1.05;
 	}
-	else if (button == MOUSE_SCROLL_UP)
+	else if (button == MOUSE_SCROLL_DOWN)
 	{
-		m_x = (x - WIDTH / 2.0) / (0.5 * WIDTH * fract->zoom) + fract->offset_x;
-		m_y = (y - HEIGHT / 2.0) / (0.5 * HEIGHT * fract->zoom)
-			+ fract->offset_y;
-		fract->zoom *= ZOOM_IN;
-		fract->offset_x = m_x - (x - WIDTH / 2.0) / (0.5 * WIDTH * fract->zoom);
-		fract->offset_y = m_y - (y - HEIGHT / 2.0) / (0.5 * HEIGHT
-				* fract->zoom);
+		z_factor = 1 / 1.05;
 	}
-	fract_render(fract);
+	else
+		z_factor = 1.0;
+	if (z_factor != 1.0)
+	{
+		fract->offset_x = (fract->offset_x - m_x) * z_factor + m_x;
+		fract->offset_y = (fract->offset_y - m_y) * z_factor + m_y;
+		fract->zoom *= z_factor;
+		fract_render(fract);
+	}
 	return (0);
 }
 
@@ -55,14 +54,14 @@ int	ft_key(int key, t_fractol *fract)
 {
 	if (!fract)
 		return (1);
-	if (key == KEY_UP)
-		fract->offset_y -= 0.1 / fract->zoom;
 	if (key == KEY_DOWN)
-		fract->offset_y += 0.1 / fract->zoom;
-	if (key == KEY_LEFT)
-		fract->offset_x -= 0.1 / fract->zoom;
+		fract->offset_y -= 0.1 * fract->zoom;
+	if (key == KEY_UP)
+		fract->offset_y += 0.1 * fract->zoom;
 	if (key == KEY_RIGHT)
-		fract->offset_x += 0.1 / fract->zoom;
+		fract->offset_x -= 0.1 * fract->zoom;
+	if (key == KEY_LEFT)
+		fract->offset_x += 0.1 * fract->zoom;
 	if (key == KEY_ESC)
 	{
 		ft_destroy(fract);

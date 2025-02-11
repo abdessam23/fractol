@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:51:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/09 16:52:58 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/11 13:52:59 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	handel_pixel(int x, int y, t_fractol *fract)
 		}
 		i++;
 	}
-	my_pixel_put(x, y, &fract->img, BLACK);
+	my_pixel_put(x, y, &fract->img, LIGHT_P);
 }
 
 void	fract_render(t_fractol *fract)
