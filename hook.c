@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:31:52 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/11 17:16:41 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/12 22:19:42 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ int	mouse_handle(int button, int x, int y, t_fractol *fract)
 	double	m_y;
 	double	z_factor;
 
-	m_x = (double)x / WIDTH * (2 -(-2)) - 2;
-	m_y = (double)y / HEIGHT * (2 - (-2)) - 2;
+	m_x = (double)x / WIDTH * (2.0 -(-2.0)) + (-2.0);
+	m_y = (double)y / HEIGHT * (2.0 - (-2.0)) + (-2.0);
 	if (button == MOUSE_SCROLL_UP)
 	{
-		z_factor = 1.05;
+		z_factor = ZOOM_F;
 	}
 	else if (button == MOUSE_SCROLL_DOWN)
 	{
-		z_factor = 1 / 1.05;
+		z_factor = 1 / ZOOM_F;
 	}
 	else
 		z_factor = 1.0;
@@ -62,6 +62,10 @@ int	ft_key(int key, t_fractol *fract)
 		fract->offset_x -= 0.1 * fract->zoom;
 	if (key == KEY_LEFT)
 		fract->offset_x += 0.1 * fract->zoom;
+	if (key == KEY_PLUS && fract->iteration < 256)
+		fract->iteration += 2;
+	if (key == KEY_MINUS && fract->iteration > 10)
+		fract->iteration -= 2;
 	if (key == KEY_ESC)
 	{
 		ft_destroy(fract);

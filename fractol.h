@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:03:30 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/11 16:02:23 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/12 22:21:57 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@
 # include <unistd.h>
 # define HEIGHT 600
 # define WIDTH 600
-# define ZOOM_IN 1.2
-# define ZOOM_OUT 0.8
-# define ZOOM_F 1.1
+# define ZOOM_F 1.05
 
 # define BLACK 0x000000
 # define GRAY 0x808080
@@ -36,18 +34,15 @@
 # define LIGHT_RED 0xFF6347
 # define LIGHT_GREEN 0x90EE90
 # define YELLOW 0xFFFF00
-# define LIGHT_PURPLE 0x800080
-# define LIGHT_P 0x51262635
 
 # define KEY_ESC 65307
 # define KEY_UP 65364
 # define KEY_DOWN 65362
 # define KEY_LEFT 65363
 # define KEY_RIGHT 65361
+# define KEY_PLUS 65451
+# define KEY_MINUS 65453
 
-# define MOUSE_LEFT_BUTTON 1
-# define MOUSE_MIDDLE_BUTTON 2
-# define MOUSE_RIGHT_BUTTON 3
 # define MOUSE_SCROLL_UP 4
 # define MOUSE_SCROLL_DOWN 5
 

@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:51:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/11 13:52:59 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/12 22:44:04 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 
 	if (!img || !img->pix)
 		return ;
-	offset = (y * img->l_len) + (x * (img->bits / 8));
+	//offset = (y * img->l_len) + (x * (img->bits / 8));
+	offset = (y * WIDTH + x) * (img->bits / 8);
 	*(unsigned int *)(img->pix + offset) = color;
 }
 
@@ -46,8 +47,8 @@ static void	handel_pixel(int x, int y, t_fractol *fract)
 	int		color;
 
 	i = 0;
-	z.x = scale_map(x, -2, 2, WIDTH) * fract->zoom + fract->offset_x;
-	z.y = scale_map(y, -2, 2, HEIGHT) * fract->zoom + fract->offset_y;
+	z.x = scale_map(x, -2.0, 2.0, WIDTH) * fract->zoom + fract->offset_x;
+	z.y = scale_map(y, 2.0, -2.0, HEIGHT) * fract->zoom + fract->offset_y;
 	init_julia(&z, &c, fract);
 	while (i < fract->iteration)
 	{
@@ -62,7 +63,7 @@ static void	handel_pixel(int x, int y, t_fractol *fract)
 		}
 		i++;
 	}
-	my_pixel_put(x, y, &fract->img, LIGHT_P);
+	my_pixel_put(x, y, &fract->img, BLACK);
 }
 
 void	fract_render(t_fractol *fract)
