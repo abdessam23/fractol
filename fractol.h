@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:03:30 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/12 22:21:57 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/13 11:57:26 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <unistd.h>
 # define HEIGHT 600
 # define WIDTH 600
-# define ZOOM_F 1.05
+# define ZOOM_F 1.2
 
 # define BLACK 0x000000
 # define GRAY 0x808080

@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:31:52 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/12 22:19:42 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/13 12:10:55 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	mouse_handle(int button, int x, int y, t_fractol *fract)
 	double	z_factor;
 
 	m_x = (double)x / WIDTH * (2.0 -(-2.0)) + (-2.0);
-	m_y = (double)y / HEIGHT * (2.0 - (-2.0)) + (-2.0);
+	m_y = (double)y / HEIGHT * (-2.0 - (2.0)) + (2.0);
 	if (button == MOUSE_SCROLL_UP)
 	{
 		z_factor = ZOOM_F;
@@ -56,17 +56,17 @@ int	ft_key(int key, t_fractol *fract)
 		return (1);
 	if (key == KEY_DOWN)
 		fract->offset_y -= 0.1 * fract->zoom;
-	if (key == KEY_UP)
+	else if (key == KEY_UP)
 		fract->offset_y += 0.1 * fract->zoom;
-	if (key == KEY_RIGHT)
+	else if (key == KEY_RIGHT)
 		fract->offset_x -= 0.1 * fract->zoom;
-	if (key == KEY_LEFT)
+	else if (key == KEY_LEFT)
 		fract->offset_x += 0.1 * fract->zoom;
-	if (key == KEY_PLUS && fract->iteration < 256)
-		fract->iteration += 2;
-	if (key == KEY_MINUS && fract->iteration > 10)
-		fract->iteration -= 2;
-	if (key == KEY_ESC)
+	else if (key == KEY_PLUS && fract->iteration < 256)
+		fract->iteration += 1;
+	else if (key == KEY_MINUS && fract->iteration > 10)
+		fract->iteration -= 1;
+	else if (key == KEY_ESC)
 	{
 		ft_destroy(fract);
 	}

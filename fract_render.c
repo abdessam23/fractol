@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:51:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/12 22:44:04 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/13 12:36:23 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 
 	if (!img || !img->pix)
 		return ;
-	//offset = (y * img->l_len) + (x * (img->bits / 8));
-	offset = (y * WIDTH + x) * (img->bits / 8);
+	offset = (y * img->l_len) + (x * (img->bits / 8));
 	*(unsigned int *)(img->pix + offset) = color;
 }
 
