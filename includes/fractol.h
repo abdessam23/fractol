@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:03:30 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/13 11:57:26 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/17 16:15:16 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define HEIGHT 600
-# define WIDTH 600
-# define ZOOM_F 1.2
-
-# define BLACK 0x000000
-# define GRAY 0x808080
-# define WHITE 0xFFFFFF
-# define LIGHT_GRAY 0xD3D3D3
-# define SILVER 0xC0C0C0
-# define LIGHT_BLUE 0xADD8E6
-# define LIGHT_RED 0xFF6347
-# define LIGHT_GREEN 0x90EE90
-# define YELLOW 0xFFFF00
-
-# define KEY_ESC 65307
-# define KEY_UP 65364
-# define KEY_DOWN 65362
-# define KEY_LEFT 65363
-# define KEY_RIGHT 65361
-# define KEY_PLUS 65451
-# define KEY_MINUS 65453
-
-# define MOUSE_SCROLL_UP 4
-# define MOUSE_SCROLL_DOWN 5
 
 typedef struct s_img
 {
@@ -67,6 +43,8 @@ typedef struct s_fractol
 	void	*new_win;
 	char	*title;
 	t_img	img;
+	int		height;
+	int		width;
 	int		iteration;
 	double	escape_v;
 	double	offset_x;
@@ -82,7 +60,7 @@ void		ft_putstr_fd(char *s, int fd);
 size_t		ft_strlen(char *str);
 int			ft_strncmp(char *s1, char *s2, int l);
 double		ft_atodbl(char *str);
-
+int			ft_isvalid(char *s);
 // utils
 int			mouse_handle(int button, int x, int y, t_fractol *param);
 int			ft_key(int key, t_fractol *fract);

@@ -6,11 +6,11 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:07:49 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/08 19:02:15 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/17 16:44:26 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol_bonus.h"
 
 t_compx	ft_square_compx(t_compx z)
 {
@@ -46,6 +46,6 @@ double	scale_map(double unscale, double n_min, double n_max, double o_max)
 
 void	ft_error(void)
 {
-	perror("problem of allocation");
+	perror("problem of allocation.");
 	exit(1);
 }

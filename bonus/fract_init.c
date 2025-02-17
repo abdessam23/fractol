@@ -6,11 +6,11 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 09:17:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/13 12:05:45 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/17 16:57:29 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol_bonus.h"
 
 int	ft_destroy(t_fractol *fract)
 {
@@ -30,17 +30,17 @@ void	fract_init(t_fractol *fract, char **argv)
 {
 	if (fract == NULL)
 		return ;
-	fract->title = argv[1];
 	fract->mlx = mlx_init();
 	if (fract->mlx == NULL)
 		ft_error();
-	fract->new_win = mlx_new_window(fract->mlx, WIDTH, HEIGHT, fract->title);
+	fract->new_win = mlx_new_window(fract->mlx, fract->width, fract->height,
+			fract->title);
 	if (fract->new_win == NULL)
 	{
 		ft_destroy(fract);
 		ft_error();
 	}
-	fract->img.img_p = mlx_new_image(fract->mlx, WIDTH, HEIGHT);
+	fract->img.img_p = mlx_new_image(fract->mlx, fract->width, fract->height);
 	if (fract->img.img_p == NULL)
 	{
 		ft_destroy(fract);
@@ -48,7 +48,7 @@ void	fract_init(t_fractol *fract, char **argv)
 	}
 	fract->img.pix = mlx_get_data_addr(fract->img.img_p, &fract->img.bits,
 			&fract->img.l_len, &fract->img.endian);
-	fract->iteration = 240;
+	fract->iteration = 66;
 	fract->escape_v = 4;
 	fract->zoom = 1;
 	fract->offset_x = 0.0;

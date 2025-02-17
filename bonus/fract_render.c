@@ -6,11 +6,11 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 09:51:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/13 12:36:23 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/17 16:59:05 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol_bonus.h"
 
 static void	my_pixel_put(int x, int y, t_img *img, int color)
 {
@@ -22,22 +22,6 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 	*(unsigned int *)(img->pix + offset) = color;
 }
 
-static void	init_julia(t_compx *z, t_compx *c, t_fractol *fract)
-{
-	if (!fract)
-		return ;
-	if (!ft_strncmp(fract->title, "julia", 5))
-	{
-		c->x = fract->julia_x;
-		c->y = fract->julia_y;
-	}
-	else
-	{
-		c->x = z->x ;
-		c->y = z->y ;
-	}
-}
-
 static void	handel_pixel(int x, int y, t_fractol *fract)
 {
 	t_compx	z;
@@ -46,26 +30,27 @@ static void	handel_pixel(int x, int y, t_fractol *fract)
 	int		color;
 
 	i = 0;
-	z.x = scale_map(x, -2.0, 2.0, WIDTH) * fract->zoom + fract->offset_x;
-	z.y = scale_map(y, 2.0, -2.0, HEIGHT) * fract->zoom + fract->offset_y;
-	init_julia(&z, &c, fract);
+	z.x = 0.0;
+	z.y = 0.0;
+	c.x = scale_map(x, -2.0, 2.0, fract->width) * fract->zoom + fract->offset_x;
+	c.y = scale_map(y, -2.0, 2.0, fract->height) * fract->zoom
+		+ fract->offset_y;
 	while (i < fract->iteration)
 	{
-		if (!ft_strncmp(fract->title, "burning_ship", 12))
-			z = ft_abs_compx(z);
+		z = ft_abs_compx(z);
 		z = ft_sum_compx(ft_square_compx(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fract->escape_v)
 		{
-			color = scale_map(i, BLACK, WHITE, fract->iteration);
+			color = scale_map(i, 0x000000, 0xFFFFFF, fract->iteration);
 			my_pixel_put(x, y, &fract->img, color);
 			return ;
 		}
 		i++;
 	}
-	my_pixel_put(x, y, &fract->img, BLACK);
+	my_pixel_put(x, y, &fract->img, 0x000000);
 }
 
-void	fract_render(t_fractol *fract)
+void	b_fract_render(t_fractol *fract)
 {
 	int	x;
 	int	y;
@@ -73,10 +58,10 @@ void	fract_render(t_fractol *fract)
 	if (!fract)
 		return ;
 	y = 0;
-	while (y < HEIGHT)
+	while (y < fract->height)
 	{
 		x = 0;
-		while (x < WIDTH)
+		while (x < fract->width)
 		{
 			handel_pixel(x, y, fract);
 			x++;
