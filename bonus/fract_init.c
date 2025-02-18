@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 09:17:55 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/17 16:57:29 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/18 08:39:18 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_destroy(t_fractol *fract)
 	return (0);
 }
 
-void	fract_init(t_fractol *fract, char **argv)
+void	fract_init(t_fractol *fract)
 {
 	if (fract == NULL)
 		return ;

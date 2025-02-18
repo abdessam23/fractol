@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:03:30 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/17 16:15:16 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/18 08:38:59 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_compx		ft_square_compx(t_compx z);
 double		scale_map(double unscale, double n_min, double n_max, double o_max);
 
 // main
-void		fract_init(t_fractol *fract, char **argv);
+void		fract_init(t_fractol *fract);
 void		fract_render(t_fractol *fract);
 void		ft_hook(t_fractol *fract);
 

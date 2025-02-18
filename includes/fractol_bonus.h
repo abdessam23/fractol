@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:03:30 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/17 16:38:49 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/18 08:39:11 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ double		scale_map(double unscale, double n_min, double n_max, double o_max);
 int			ft_key(int key, t_fractol *fract);
 void		ft_hook(t_fractol *fract);
 // main
-void		fract_init(t_fractol *fract, char **argv);
+void		fract_init(t_fractol *fract);
 void		b_fract_render(t_fractol *fract);
 void		ft_hook(t_fractol *fract);
 

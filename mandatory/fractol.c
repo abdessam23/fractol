@@ -6,7 +6,7 @@
 /*   By: abhimi <abhimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:43:16 by abhimi            #+#    #+#             */
-/*   Updated: 2025/02/17 16:53:54 by abhimi           ###   ########.fr       */
+/*   Updated: 2025/02/18 08:41:49 by abhimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_error_arg(void)
 {
-	ft_putstr_fd("Usage:\n\n./fractol mandelbrot\n\n", 2);
+	ft_putstr_fd("Usage:\n./fractol mandelbrot\n\n", 2);
 	ft_putstr_fd("./fractol julia x y\n\n", 2);
 	exit(1);
 }
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		vars.height = 800;
 		vars.width = 800;
 		vars.title = argv[1];
-		fract_init(&vars, argv);
+		fract_init(&vars);
 		fract_render(&vars);
 		ft_hook(&vars);
 		mlx_loop(vars.mlx);
